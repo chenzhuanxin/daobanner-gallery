@@ -7,7 +7,7 @@
 <meta name="description" content="2026 年六省区民族文化嘉年华道旗设计图集，14 款设计方案左右滑动查看。">
 <meta property="og:title" content="道旗设计图集 · 同心筑梦 南北共融">
 <meta property="og:description" content="共 14 款道旗设计方案，左右滑动查看。">
-<meta property="og:image" content="images/01-shiliu-main.jpg">
+<meta property="og:image" content="images/01-shiliu-main.jpg?v=2">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23A81F1F'/%3E%3Ctext x='16' y='23' font-size='19' text-anchor='middle' fill='%23FBF4E8' font-family='serif'%3E%E9%81%93%3C/text%3E%3C/svg%3E">
 <style>
   :root{
@@ -474,6 +474,7 @@
   ];
 
   var N = DATA.length;
+  var VER = "?v=2";   // 图片版本号，更新设计图时递增以绕过缓存
   var track   = document.getElementById("track");
   var thumbs  = document.getElementById("thumbs");
   var prevBtn = document.getElementById("prev");
@@ -499,7 +500,7 @@
     var f = document.createElement("div");
     f.className = "frame";
     var img = document.createElement("img");
-    img.src = d.src;
+    img.src = d.src + VER;
     img.alt = d.t;
     img.decoding = "async";
     f.appendChild(img);
@@ -513,7 +514,7 @@
     th.type = "button";
     th.setAttribute("aria-label", d.t);
     var ti = document.createElement("img");
-    ti.src = d.src; ti.alt = ""; ti.decoding = "async";
+    ti.src = d.src + VER; ti.alt = ""; ti.decoding = "async";
     th.appendChild(ti);
     th.addEventListener("click", function(){ goTo(i); });
     thumbs.appendChild(th);
@@ -658,7 +659,7 @@
 
   /* ---- 放大查看 ---- */
   function openLb(i){
-    lbImg.src = DATA[i].src.replace("images/", "images/full/");
+    lbImg.src = DATA[i].src.replace("images/", "images/full/") + VER;
     lbImg.alt = DATA[i].t;
     lbTtl.textContent = DATA[i].t;
     lbCnt.textContent = String(i + 1).padStart(2, "0") + " / " + N;
